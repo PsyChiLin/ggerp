@@ -50,7 +50,7 @@ Load `ERPplot`.
 library(ERPplot)
 ```
 
-We demonstrate the graphical capabilities of `ERPplot` with these real data set `DirectedForgetting`. Download data `DirectedForgetting` from [website](https://goo.gl/NsB5pX) or directly use the build-in one.
+We demonstrate the graphical capabilities of `ERPplot` with these real data set `DirectedForgetting`. Download data `DirectedForgetting` from [this website](https://www.dropbox.com/s/20uhxsmcbex3i0m/DirectedForgetting.csv?dl=0) or directly use the build-in one.
 It contains variables named `TBR_score` and `TBF_score`  (continuous), `Condition` (categorical), and one variable per time point (ERP values, i.e, `T_1200`). The scope of possible linear modeling designs is therefore quite large. The command lines shall be marginally adpated to your own ERP dataset. Note that `Condition`, which is a with-subject variable, could also be changed to a between subject variable `Group` in your own dataset.
 ```{r data,message=FALSE}
 # dta <- read.csv("DirectedForgetting.csv")
@@ -144,7 +144,7 @@ dta_c <- dta %>%
         droplevels()
 ```
 Then, create the plot.
-```{r F04,message=FALSE}
+```{r F04,message=FALSE, fig.height=5}
 Fig04 <- plot_fa(data = dta_c,
                  frames = time_pt,
                  channel = 5,
@@ -175,7 +175,7 @@ test_res <- plot_fa(data = dta,
                     ylim = c(-6, 13))
 ```
 
-Then, create GIF file for animation. The Gif file is big to upload on this README page. It could be download on [this website]()
+Then, create GIF file for animation. The example Gif file could be download on [this website](https://www.dropbox.com/s/p80k9jmbburzynv/Fig05.gif?dl=0).
 ```{r F05p,message=FALSE,eval=FALSE}
 Fig05 <- plot_coord(tests_rst = test_res$Test_Rst,
                     frames = time_pt,
@@ -195,7 +195,7 @@ dta_c <- dta %>%
 ```
 
 Produce the each plot respectively. 
-```{r F06d, message=FALSE, fig.show = 'hide'}
+```{r F06p, message=FALSE, fig.show = 'hide'}
 Fig06a <- plot_tete(data = dta_c,
                     frames = time_pt,
                     channel = 5,
@@ -228,7 +228,7 @@ Fig06c <- plot_fa(data = dta_c,
                   labs = list(y = "Correlation", x = "Time (ms)"))
 ```
 Combine the plots to a final figure.
-```{r F06p,message=FALSE, fig.height=10}
+```{r F06all,message=FALSE, fig.height=10}
 grid.arrange(Fig06a +
                      ggtitle("A") +
                      theme(plot.title = element_text(hjust = 0)),

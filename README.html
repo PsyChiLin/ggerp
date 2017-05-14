@@ -25,14 +25,14 @@ body {
 
 <body>
 
-<h2 id="erpeda-graphical-exploration-of-erp-data-with-r">ERPEDA: Graphical exploration of ERP data with R</h2>
+<h2 id="erpplot-graphical-exploration-of-erp-data-with-r">ERPplot: Graphical exploration of ERP data with R</h2>
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-<p><strong>ERPEDA</strong> considers event-related brain potential (ERP) data analysis in a standard linear model setting and implements a set of functions in R to facilitate visual exploration of data and display of statistical testing results.</p>
+<p><strong>ERPplot</strong> considers event-related brain potential (ERP) data analysis in a standard linear model setting and implements a set of functions in R to facilitate visual exploration of data and display of statistical testing results.</p>
 <p>These R functions are based on <a href="https://cran.r-project.org/web/packages/ggplot2/ggplot2.pdf">ggplot2 package</a> to enable step-by-step revision of graphic objects. We also adopts significant testing procedure provided by <a href="https://cran.r-project.org/web/packages/ERP/index.html">ERP package</a>.</p>
-<p>Beyond rendering conditioning plots of ERPs on the scalp map, with these functions in <code>ERPEDA</code> users can create animation for displaying significant effects across electrode locations over time by using <a href="https://github.com/dgrtwo/gganimate">gganimate package</a>.</p>
+<p>Beyond rendering conditioning plots of ERPs on the scalp map, with these functions in <code>ERPplot</code> users can create animation for displaying significant effects across electrode locations over time by using <a href="https://github.com/dgrtwo/gganimate">gganimate package</a>.</p>
 <p>It can be installed using <a href="https://github.com/hadley/devtools">devtools</a>:</p>
-<pre><code>install_github(&quot;PsyChiLin/ERPEDA&quot;)</code></pre>
-<p>The following R command lines illustrate the exploration of ERP data using advanced graphical tool <code>ERPEDA</code> available in R.</p>
+<pre><code>install_github(&quot;PsyChiLin/ERPplot&quot;)</code></pre>
+<p>The following R command lines illustrate the exploration of ERP data using advanced graphical tool <code>ERPplot</code> available in R.</p>
 <p>Load (and install) packages.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(pacman)
 ## Warning: package 'pacman' was built under R version 3.2.4
@@ -46,9 +46,9 @@ pacman::<span class="kw">p_load</span>(ERP, mnormt, fdrtool, tidyverse, gridExtr
 <span class="kw">library</span>(animation)
 ## Warning: package 'animation' was built under R version 3.2.5
 <span class="kw">library</span>(gganimate)</code></pre>
-<p>Load <code>ERPEDA</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ERPEDA)</code></pre>
-<p>We demonstrate the graphical capabilities of <code>ERPEDA</code> with these real data set <code>DirectedForgetting</code>. Download data <code>DirectedForgetting</code> from <a href="https://goo.gl/NsB5pX">website</a> or directly use the build-in one. It contains variables named <code>TBR_score</code> and <code>TBF_score</code> (continuous), <code>Condition</code> (categorical), and one variable per time point (ERP values, i.e, <code>T_1200</code>). The scope of possible linear modeling designs is therefore quite large. The command lines shall be marginally adpated to your own ERP dataset. Note that <code>Condition</code>, which is a with-subject variable, could also be changed to a between subject variable <code>Group</code> in your own dataset.</p>
+<p>Load <code>ERPplot</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ERPplot)</code></pre>
+<p>We demonstrate the graphical capabilities of <code>ERPplot</code> with these real data set <code>DirectedForgetting</code>. Download data <code>DirectedForgetting</code> from <a href="https://www.dropbox.com/s/20uhxsmcbex3i0m/DirectedForgetting.csv?dl=0">this website</a> or directly use the build-in one. It contains variables named <code>TBR_score</code> and <code>TBF_score</code> (continuous), <code>Condition</code> (categorical), and one variable per time point (ERP values, i.e, <code>T_1200</code>). The scope of possible linear modeling designs is therefore quite large. The command lines shall be marginally adpated to your own ERP dataset. Note that <code>Condition</code>, which is a with-subject variable, could also be changed to a between subject variable <code>Group</code> in your own dataset.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># dta &lt;- read.csv(&quot;DirectedForgetting.csv&quot;)</span>
 dta &lt;-<span class="st"> </span>DirectedForgetting</code></pre>
 <p>The sequence of time points is generated, called <code>time_pt</code>.</p>
@@ -61,7 +61,7 @@ dta &lt;-<span class="st"> </span>DirectedForgetting</code></pre>
                     <span class="kw">c</span>(<span class="st">&quot;TP7&quot;</span>, <span class="st">&quot;CP3&quot;</span>, <span class="st">&quot;CPZ&quot;</span>, <span class="st">&quot;CP4&quot;</span>, <span class="st">&quot;TP8&quot;</span>),
                     <span class="kw">c</span>(<span class="st">&quot;P7&quot;</span>, <span class="st">&quot;P3&quot;</span>, <span class="st">&quot;PZ&quot;</span>, <span class="st">&quot;P4&quot;</span>, <span class="st">&quot;P8&quot;</span>),
                     <span class="kw">c</span>(<span class="ot">NA</span>, <span class="st">&quot;O1&quot;</span>, <span class="st">&quot;OZ&quot;</span>, <span class="st">&quot;O2&quot;</span>, <span class="ot">NA</span>))</code></pre>
-<p>\&lt;\&lt;\&lt;\&lt;\&lt;\&lt;\&lt; HEAD <strong>Average ERP curves for conditions on the 10/10 system</strong></p>
+<p><strong>Average ERP curves for conditions on the 10/10 system</strong></p>
 <pre class="sourceCode r"><code class="sourceCode r">Fig01 &lt;-<span class="st"> </span><span class="kw">plot_tete</span>(<span class="dt">data =</span> dta,
                    <span class="dt">frames =</span> time_pt,
                    <span class="dt">channel =</span> <span class="dv">5</span>,
@@ -136,7 +136,7 @@ dta &lt;-<span class="st"> </span>DirectedForgetting</code></pre>
                     <span class="dt">design0 =</span> (~Subject),
                     <span class="dt">nbf =</span> <span class="dv">5</span>,
                     <span class="dt">ylim =</span> <span class="kw">c</span>(-<span class="dv">6</span>, <span class="dv">13</span>))</code></pre>
-<p>Then, create GIF file for animation. The Gif file is big to upload on this README page. It could be download on <a href>this website</a></p>
+<p>Then, create GIF file for animation. The example Gif file could be download on <a href="https://www.dropbox.com/s/p80k9jmbburzynv/Fig05.gif?dl=0">this website</a>.</p>
 <pre class="sourceCode r"><code class="sourceCode r">Fig05 &lt;-<span class="st"> </span><span class="kw">plot_coord</span>(<span class="dt">tests_rst =</span> test_res$Test_Rst,
                     <span class="dt">frames =</span> time_pt,
                     <span class="dt">show =</span> <span class="kw">seq</span>(<span class="dv">200</span>, <span class="dv">500</span>, <span class="dt">by =</span> <span class="dv">1</span>),
@@ -144,10 +144,12 @@ dta &lt;-<span class="st"> </span>DirectedForgetting</code></pre>
                     <span class="dt">interval =</span> <span class="fl">0.1</span>, 
                     <span class="dt">filename =</span> <span class="st">&quot;Fig05.gif&quot;</span>)</code></pre>
 <p><strong>Associations between ERPs and a numerical covariate</strong></p>
+<p>First restrict the data to three channels.</p>
 <pre class="sourceCode r"><code class="sourceCode r">dta_c &lt;-<span class="st"> </span>dta %&gt;%
 <span class="st">        </span><span class="kw">filter</span>(Condition ==<span class="st"> &quot;TBF&quot;</span>, Channel %in%<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;FZ&quot;</span>,<span class="st">&quot;CZ&quot;</span>,<span class="st">&quot;PZ&quot;</span>)) %&gt;%
-<span class="st">        </span><span class="kw">droplevels</span>()
-Fig06a &lt;-<span class="st"> </span><span class="kw">plot_tete</span>(<span class="dt">data =</span> dta_c,
+<span class="st">        </span><span class="kw">droplevels</span>()</code></pre>
+<p>Produce the each plot respectively.</p>
+<pre class="sourceCode r"><code class="sourceCode r">Fig06a &lt;-<span class="st"> </span><span class="kw">plot_tete</span>(<span class="dt">data =</span> dta_c,
                     <span class="dt">frames =</span> time_pt,
                     <span class="dt">channel =</span> <span class="dv">5</span>,
                     <span class="dt">subject =</span> <span class="dv">1</span>,
@@ -177,6 +179,7 @@ Fig06c &lt;-<span class="st"> </span><span class="kw">plot_fa</span>(<span class
                   <span class="dt">nbf =</span> <span class="dv">5</span>,
                   <span class="dt">ylim=</span><span class="kw">c</span>(-<span class="dv">1</span>, <span class="dv">1</span>),
                   <span class="dt">labs =</span> <span class="kw">list</span>(<span class="dt">y =</span> <span class="st">&quot;Correlation&quot;</span>, <span class="dt">x =</span> <span class="st">&quot;Time (ms)&quot;</span>))</code></pre>
+<p>Combine the plots to a final figure.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">grid.arrange</span>(Fig06a +
 <span class="st">                     </span><span class="kw">ggtitle</span>(<span class="st">&quot;A&quot;</span>) +
 <span class="st">                     </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">hjust =</span> <span class="dv">0</span>)),

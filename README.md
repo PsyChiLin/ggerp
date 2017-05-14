@@ -1,19 +1,19 @@
 
-ERPEDA: Graphical exploration of ERP data with R
-------------------------------------------------
+ERPplot: Graphical exploration of ERP data with R
+-------------------------------------------------
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-**ERPEDA** considers event-related brain potential (ERP) data analysis in a standard linear model setting and implements a set of functions in R to facilitate visual exploration of data and display of statistical testing results.
+**ERPplot** considers event-related brain potential (ERP) data analysis in a standard linear model setting and implements a set of functions in R to facilitate visual exploration of data and display of statistical testing results.
 
 These R functions are based on [ggplot2 package](https://cran.r-project.org/web/packages/ggplot2/ggplot2.pdf) to enable step-by-step revision of graphic objects. We also adopts significant testing procedure provided by [ERP package](https://cran.r-project.org/web/packages/ERP/index.html).
 
-Beyond rendering conditioning plots of ERPs on the scalp map, with these functions in `ERPEDA` users can create animation for displaying significant effects across electrode locations over time by using [gganimate package](https://github.com/dgrtwo/gganimate).
+Beyond rendering conditioning plots of ERPs on the scalp map, with these functions in `ERPplot` users can create animation for displaying significant effects across electrode locations over time by using [gganimate package](https://github.com/dgrtwo/gganimate).
 
 It can be installed using [devtools](https://github.com/hadley/devtools):
 
-    install_github("PsyChiLin/ERPEDA")
+    install_github("PsyChiLin/ERPplot")
 
-The following R command lines illustrate the exploration of ERP data using advanced graphical tool `ERPEDA` available in R.
+The following R command lines illustrate the exploration of ERP data using advanced graphical tool `ERPplot` available in R.
 
 Load (and install) packages.
 
@@ -40,13 +40,13 @@ library(animation)
 library(gganimate)
 ```
 
-Load `ERPEDA`.
+Load `ERPplot`.
 
 ``` r
-library(ERPEDA)
+library(ERPplot)
 ```
 
-We demonstrate the graphical capabilities of `ERPEDA` with these real data set `DirectedForgetting`. Download data `DirectedForgetting` from [website](https://goo.gl/NsB5pX) or directly use the build-in one. It contains variables named `TBR_score` and `TBF_score` (continuous), `Condition` (categorical), and one variable per time point (ERP values, i.e, `T_1200`). The scope of possible linear modeling designs is therefore quite large. The command lines shall be marginally adpated to your own ERP dataset. Note that `Condition`, which is a with-subject variable, could also be changed to a between subject variable `Group` in your own dataset.
+We demonstrate the graphical capabilities of `ERPplot` with these real data set `DirectedForgetting`. Download data `DirectedForgetting` from [this website](https://www.dropbox.com/s/20uhxsmcbex3i0m/DirectedForgetting.csv?dl=0) or directly use the build-in one. It contains variables named `TBR_score` and `TBF_score` (continuous), `Condition` (categorical), and one variable per time point (ERP values, i.e, `T_1200`). The scope of possible linear modeling designs is therefore quite large. The command lines shall be marginally adpated to your own ERP dataset. Note that `Condition`, which is a with-subject variable, could also be changed to a between subject variable `Group` in your own dataset.
 
 ``` r
 # dta <- read.csv("DirectedForgetting.csv")
@@ -71,7 +71,7 @@ erpR_coord <- rbind(c(NA, "FP1", NA, "FP2", NA),
                     c(NA, "O1", "OZ", "O2", NA))
 ```
 
-\<\<\<\<\<\<\< HEAD **Average ERP curves for conditions on the 10/10 system**
+**Average ERP curves for conditions on the 10/10 system**
 
 ``` r
 Fig01 <- plot_tete(data = dta,
@@ -190,7 +190,7 @@ test_res <- plot_fa(data = dta,
                     ylim = c(-6, 13))
 ```
 
-Then, create GIF file for animation. The Gif file is big to upload on this README page. It could be download on [this website]()
+Then, create GIF file for animation. The example Gif file could be download on [this website](https://www.dropbox.com/s/p80k9jmbburzynv/Fig05.gif?dl=0).
 
 ``` r
 Fig05 <- plot_coord(tests_rst = test_res$Test_Rst,
@@ -203,10 +203,17 @@ Fig05 <- plot_coord(tests_rst = test_res$Test_Rst,
 
 **Associations between ERPs and a numerical covariate**
 
+First restrict the data to three channels.
+
 ``` r
 dta_c <- dta %>%
         filter(Condition == "TBF", Channel %in% c("FZ","CZ","PZ")) %>%
         droplevels()
+```
+
+Produce the each plot respectively.
+
+``` r
 Fig06a <- plot_tete(data = dta_c,
                     frames = time_pt,
                     channel = 5,
@@ -239,6 +246,8 @@ Fig06c <- plot_fa(data = dta_c,
                   labs = list(y = "Correlation", x = "Time (ms)"))
 ```
 
+Combine the plots to a final figure.
+
 ``` r
 grid.arrange(Fig06a +
                      ggtitle("A") +
@@ -251,4 +260,4 @@ grid.arrange(Fig06a +
                      theme(plot.title = element_text(hjust = 0)))
 ```
 
-<img src="README_figs/README-F06p-1.png" width="672" />
+<img src="README_figs/README-F06all-1.png" width="672" />
