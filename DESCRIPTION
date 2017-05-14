@@ -1,0 +1,19 @@
+Package: ERPplot
+Type: Package
+Title: Graphical exploration of ERP data
+Version: 0.1
+Date: 2017-05-14
+Author: Chi-Lin Yu <psychilinyu@gmail.com>, David Causeur
+    <david.causeur@agrocampus-ouest.fr>, & Ching-Fan Sheu <csheu@mail.ncku.edu.tw>
+Maintainer: Chi-Lin Yu <psychilinyu@gmail.com>
+Description: The ERPplot pacakge has been developed at National Cheng Kung
+    University to provide functions most useful for Event-related brain potential
+    (ERP) data analysis. ERP data analysis is considered in a standard linear
+    model setting, and We implement a set of functions in R to facilitate visual
+    exploration of data and display of statistical testing results. These R
+    functions are based on ggplot2 package (Wickham, 2009) to enable step-by-step
+    revision of graphic objects.
+Depends: ERP, mnormt, fdrtool, tidyverse, gridExtra, crayon,
+               boot, reshape2, ggthemes, devtools, gganimate
+LazyData: TRUE
+RoxygenNote: 5.0.1
