@@ -13,6 +13,8 @@ It can be installed using [devtools](https://github.com/hadley/devtools):
 
     install_github("PsyChiLin/ERPplot")
 
+**Packages Preparation**
+
 The following R command lines illustrate the exploration of ERP data using advanced graphical tool `ERPplot` available in R.
 
 Load (and install) packages.
@@ -46,7 +48,7 @@ Load `ERPplot`.
 library(ERPplot)
 ```
 
-We demonstrate the graphical capabilities of `ERPplot` with these real data set `DirectedForgetting`. Download data `DirectedForgetting` from [this website](https://www.dropbox.com/s/20uhxsmcbex3i0m/DirectedForgetting.csv?dl=0) or directly use the build-in one. It contains variables named `TBR_score` and `TBF_score` (continuous), `Condition` (categorical), and one variable per time point (ERP values, i.e, `T_1200`). The scope of possible linear modeling designs is therefore quite large. The command lines shall be marginally adpated to your own ERP dataset. Note that `Condition`, which is a with-subject variable, could also be changed to a between subject variable `Group` in your own dataset.
+**Data Preparation** We demonstrate the graphical capabilities of `ERPplot` with these real data set `DirectedForgetting`. Download data `DirectedForgetting` from [this website](https://www.dropbox.com/s/20uhxsmcbex3i0m/DirectedForgetting.csv?dl=0) or directly use the build-in one. It contains variables named `TBR_score` and `TBF_score` (continuous), `Condition` (categorical), and one variable per time point (ERP values, i.e, `T_1200`). The scope of possible linear modeling designs is therefore quite large. The command lines shall be marginally adpated to your own ERP dataset. Note that `Condition`, which is a with-subject variable, could also be changed to a between subject variable `Group` in your own dataset.
 
 ``` r
 # dta <- read.csv("DirectedForgetting.csv")
@@ -211,7 +213,7 @@ dta_c <- dta %>%
         droplevels()
 ```
 
-Produce the each plot respectively.
+Produce each plot respectively.
 
 ``` r
 Fig06a <- plot_tete(data = dta_c,
