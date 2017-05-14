@@ -1,4 +1,4 @@
-#' Visualization of significant differences in ERPs using gg_animation
+#' Visualization of significant differences in ERPs using gganimation
 #'
 #' The plot coord takes the results of \code{\link{plot_fa}} to create a animated GIF plot for visualizing significant differences in ERPs across locations on the scalp over time.
 #' @param tests_rst the testing result from \code{\link{plot_fa}}.
@@ -22,9 +22,9 @@
 #' @examples
 #' data(DirectedForgetting)
 #' time_pt <- seq(-200, 1000, 1)
-#' 
-#' test_res <- plot_fa(data = DirectedForgetting, frames = time_pt, 
-#'                     channel = 5, subject = 1, uV = 6:1206, test = 4, 
+#'
+#' test_res <- plot_fa(data = DirectedForgetting, frames = time_pt,
+#'                     channel = 5, subject = 1, uV = 6:1206, test = 4,
 #'                     mode = "test_signal",
 #'                     design = (~Subject + Condition), design0 = (~Subject), nbf = 5)
 #'
