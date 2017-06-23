@@ -72,10 +72,9 @@ plot_fa(data = dta_c,
         mode = "test_signal",
         design = (~Subject + Condition), design0 = (~Subject), nbf = 5)
 }
-\author{
-Chi-Lin Yu <psychilinyu@gmail.com>, Ching-Fan Sheu <csheu@mail.ncku.edu.tw>
-}
 \seealso{
 \code{\link{plot_tete}} \code{\link{plot_coord}}  \code{\link[ERP]{erpfatest}}
 }
-
+\author{
+Chi-Lin Yu <psychilinyu@gmail.com>, Ching-Fan Sheu <csheu@mail.ncku.edu.tw>
+}

@@ -77,10 +77,9 @@ plot_tete(data = dta_c,
           channel = 5, subject = 1, uV = 6:1206, test = 4,
           mode = "bootci")
 }
-\author{
-Chi-Lin Yu <psychilinyu@gmail.com>, Ching-Fan Sheu <csheu@mail.ncku.edu.tw>
-}
 \seealso{
 \code{\link{plot_fa}} \code{\link{plot_coord}}
 }
-
+\author{
+Chi-Lin Yu <psychilinyu@gmail.com>, Ching-Fan Sheu <csheu@mail.ncku.edu.tw>
+}

@@ -59,10 +59,9 @@ plot_coord(tests_rst = test_res$Test_Rst,
            interval = 0.1,
            filename = "GIFfile.gif")
 }
-\author{
-Chi-Lin Yu <psychilinyu@gmail.com>, Ching-Fan Sheu <csheu@mail.ncku.edu.tw>
-}
 \seealso{
 \code{\link{plot_tete}} \code{\link{plot_fa}}
 }
-
+\author{
+Chi-Lin Yu <psychilinyu@gmail.com>, Ching-Fan Sheu <csheu@mail.ncku.edu.tw>
+}
