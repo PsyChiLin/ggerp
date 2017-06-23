@@ -18,7 +18,7 @@ These R functions are based on [ggplot2 package](https://cran.r-project.org/web/
 
 Beyond rendering conditioning plots of ERPs on the scalp map, with these functions in `ggerp` users can create animation for displaying significant effects across electrode locations over time by using [gganimate package](https://github.com/dgrtwo/gganimate). 
 
-It can be installed using [devtools](https://github.com/hadley/devtools):
+The `ggerp` can be installed using [devtools](https://github.com/hadley/devtools):
 
 ```
 install_github("PsyChiLin/ggerp")
