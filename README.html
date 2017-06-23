@@ -25,18 +25,17 @@ body {
 
 <body>
 
-<h2 id="erpplot-graphical-exploration-of-erp-data-with-r">ERPplot: Graphical exploration of ERP data with R</h2>
+<h2 id="ggerp-graphical-exploration-of-erp-data-with-r">ggerp: Graphical exploration of ERP data with R</h2>
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-<p><strong>ERPplot</strong> considers event-related brain potential (ERP) data analysis in a standard linear model setting and implements a set of functions in R to facilitate visual exploration of data and display of statistical testing results.</p>
+<p><strong>ggerp</strong> considers event-related brain potential (ERP) data analysis in a standard linear model setting and implements a set of functions in R to facilitate visual exploration of data and display of statistical testing results.</p>
 <p>These R functions are based on <a href="https://cran.r-project.org/web/packages/ggplot2/ggplot2.pdf">ggplot2 package</a> to enable step-by-step revision of graphic objects. We also adopts significant testing procedure provided by <a href="https://cran.r-project.org/web/packages/ERP/index.html">ERP package</a>.</p>
-<p>Beyond rendering conditioning plots of ERPs on the scalp map, with these functions in <code>ERPplot</code> users can create animation for displaying significant effects across electrode locations over time by using <a href="https://github.com/dgrtwo/gganimate">gganimate package</a>.</p>
+<p>Beyond rendering conditioning plots of ERPs on the scalp map, with these functions in <code>ggerp</code> users can create animation for displaying significant effects across electrode locations over time by using <a href="https://github.com/dgrtwo/gganimate">gganimate package</a>.</p>
 <p>It can be installed using <a href="https://github.com/hadley/devtools">devtools</a>:</p>
-<pre><code>install_github(&quot;PsyChiLin/ERPplot&quot;)</code></pre>
+<pre><code>install_github(&quot;PsyChiLin/ggerp&quot;)</code></pre>
 <p><strong>Packages Preparation</strong></p>
-<p>The following R command lines illustrate the exploration of ERP data using advanced graphical tool <code>ERPplot</code> available in R.</p>
+<p>The following R command lines illustrate the exploration of ERP data using advanced graphical tool <code>ggerp</code> available in R.</p>
 <p>Load (and install) packages.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(pacman)
-## Warning: package 'pacman' was built under R version 3.2.4
 pacman::<span class="kw">p_load</span>(ERP, mnormt, fdrtool, tidyverse, gridExtra, crayon,
                boot, reshape2, ggthemes, devtools)</code></pre>
 <p>Install <code>ImageMagick</code> within R. Please check all boxes.</p>
@@ -45,11 +44,10 @@ pacman::<span class="kw">p_load</span>(ERP, mnormt, fdrtool, tidyverse, gridExtr
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co">#install_github(&quot;yihui/animation&quot;)</span>
 <span class="co">#install_github(&quot;dgrtwo/gganimate&quot;)</span>
 <span class="kw">library</span>(animation)
-## Warning: package 'animation' was built under R version 3.2.5
 <span class="kw">library</span>(gganimate)</code></pre>
-<p>Load <code>ERPplot</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ERPplot)</code></pre>
-<p><strong>Data Preparation</strong> We demonstrate the graphical capabilities of <code>ERPplot</code> with these real data set <code>DirectedForgetting</code>. Download data <code>DirectedForgetting</code> from <a href="https://www.dropbox.com/s/20uhxsmcbex3i0m/DirectedForgetting.csv?dl=0">this website</a> or directly use the build-in one. It contains variables named <code>TBR_score</code> and <code>TBF_score</code> (continuous), <code>Condition</code> (categorical), and one variable per time point (ERP values, i.e, <code>T_1200</code>). The scope of possible linear modeling designs is therefore quite large. The command lines shall be marginally adpated to your own ERP dataset. Note that <code>Condition</code>, which is a with-subject variable, could also be changed to a between subject variable <code>Group</code> in your own dataset.</p>
+<p>Load <code>ggerp</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggerp)</code></pre>
+<p><strong>Data Preparation</strong> We demonstrate the graphical capabilities of <code>ggerp</code> with these real data set <code>DirectedForgetting</code>. Download data <code>DirectedForgetting</code> from <a href="https://www.dropbox.com/s/20uhxsmcbex3i0m/DirectedForgetting.csv?dl=0">this website</a> or directly use the build-in one. It contains variables named <code>TBR_score</code> and <code>TBF_score</code> (continuous), <code>Condition</code> (categorical), and one variable per time point (ERP values, i.e, <code>T_1200</code>). The scope of possible linear modeling designs is therefore quite large. The command lines shall be marginally adpated to your own ERP dataset. Note that <code>Condition</code>, which is a with-subject variable, could also be changed to a between subject variable <code>Group</code> in your own dataset.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># dta &lt;- read.csv(&quot;DirectedForgetting.csv&quot;)</span>
 dta &lt;-<span class="st"> </span>DirectedForgetting</code></pre>
 <p>The sequence of time points is generated, called <code>time_pt</code>.</p>

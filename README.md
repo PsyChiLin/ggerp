@@ -1,27 +1,26 @@
 
-ERPplot: Graphical exploration of ERP data with R
--------------------------------------------------
+ggerp: Graphical exploration of ERP data with R
+-----------------------------------------------
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-**ERPplot** considers event-related brain potential (ERP) data analysis in a standard linear model setting and implements a set of functions in R to facilitate visual exploration of data and display of statistical testing results.
+**ggerp** considers event-related brain potential (ERP) data analysis in a standard linear model setting and implements a set of functions in R to facilitate visual exploration of data and display of statistical testing results.
 
 These R functions are based on [ggplot2 package](https://cran.r-project.org/web/packages/ggplot2/ggplot2.pdf) to enable step-by-step revision of graphic objects. We also adopts significant testing procedure provided by [ERP package](https://cran.r-project.org/web/packages/ERP/index.html).
 
-Beyond rendering conditioning plots of ERPs on the scalp map, with these functions in `ERPplot` users can create animation for displaying significant effects across electrode locations over time by using [gganimate package](https://github.com/dgrtwo/gganimate).
+Beyond rendering conditioning plots of ERPs on the scalp map, with these functions in `ggerp` users can create animation for displaying significant effects across electrode locations over time by using [gganimate package](https://github.com/dgrtwo/gganimate).
 
 It can be installed using [devtools](https://github.com/hadley/devtools):
 
-    install_github("PsyChiLin/ERPplot")
+    install_github("PsyChiLin/ggerp")
 
 **Packages Preparation**
 
-The following R command lines illustrate the exploration of ERP data using advanced graphical tool `ERPplot` available in R.
+The following R command lines illustrate the exploration of ERP data using advanced graphical tool `ggerp` available in R.
 
 Load (and install) packages.
 
 ``` r
 library(pacman)
-## Warning: package 'pacman' was built under R version 3.2.4
 pacman::p_load(ERP, mnormt, fdrtool, tidyverse, gridExtra, crayon,
                boot, reshape2, ggthemes, devtools)
 ```
@@ -38,17 +37,16 @@ Install and load `gganimate` and `animation` from github.
 #install_github("yihui/animation")
 #install_github("dgrtwo/gganimate")
 library(animation)
-## Warning: package 'animation' was built under R version 3.2.5
 library(gganimate)
 ```
 
-Load `ERPplot`.
+Load `ggerp`.
 
 ``` r
-library(ERPplot)
+library(ggerp)
 ```
 
-**Data Preparation** We demonstrate the graphical capabilities of `ERPplot` with these real data set `DirectedForgetting`. Download data `DirectedForgetting` from [this website](https://www.dropbox.com/s/20uhxsmcbex3i0m/DirectedForgetting.csv?dl=0) or directly use the build-in one. It contains variables named `TBR_score` and `TBF_score` (continuous), `Condition` (categorical), and one variable per time point (ERP values, i.e, `T_1200`). The scope of possible linear modeling designs is therefore quite large. The command lines shall be marginally adpated to your own ERP dataset. Note that `Condition`, which is a with-subject variable, could also be changed to a between subject variable `Group` in your own dataset.
+**Data Preparation** We demonstrate the graphical capabilities of `ggerp` with these real data set `DirectedForgetting`. Download data `DirectedForgetting` from [this website](https://www.dropbox.com/s/20uhxsmcbex3i0m/DirectedForgetting.csv?dl=0) or directly use the build-in one. It contains variables named `TBR_score` and `TBF_score` (continuous), `Condition` (categorical), and one variable per time point (ERP values, i.e, `T_1200`). The scope of possible linear modeling designs is therefore quite large. The command lines shall be marginally adpated to your own ERP dataset. Note that `Condition`, which is a with-subject variable, could also be changed to a between subject variable `Group` in your own dataset.
 
 ``` r
 # dta <- read.csv("DirectedForgetting.csv")
