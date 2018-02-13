@@ -14,11 +14,11 @@ knitr::opts_chunk$set(collapse=TRUE,
 
 **ggerp** considers event-related brain potential (ERP) data analysis in a standard linear model setting and implements a set of functions in R to facilitate visual exploration of data and display of statistical testing results.
 
-These R functions are based on [ggplot2 package](https://cran.r-project.org/web/packages/ggplot2/ggplot2.pdf) to enable step-by-step revision of graphic objects. We also adopts significant testing procedure provided by [ERP package](https://cran.r-project.org/web/packages/ERP/index.html).
+These R functions are based on [`ggplot2 package`](https://cran.r-project.org/web/packages/ggplot2/ggplot2.pdf) to enable step-by-step revision of graphic objects. We also adopts significant testing procedure provided by [`ERP package`](https://cran.r-project.org/web/packages/ERP/index.html).
 
-Beyond rendering conditioning plots of ERPs on the scalp map, with these functions in `ggerp` users can create animation for displaying significant effects across electrode locations over time by using [gganimate package](https://github.com/dgrtwo/gganimate). 
+Beyond rendering conditioning plots of ERPs on the scalp map, with these functions in `ggerp` users can create animation for displaying significant effects across electrode locations over time by using [`gganimate package`](https://github.com/dgrtwo/gganimate). 
 
-The `ggerp` can be installed using [devtools](https://github.com/hadley/devtools):
+The `ggerp` can be installed using [`devtools`](https://github.com/hadley/devtools):
 
 ```
 install_github("PsyChiLin/ggerp")

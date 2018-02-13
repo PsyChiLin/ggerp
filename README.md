@@ -1,21 +1,33 @@
 
-ggerp: Graphical exploration of ERP data with R
------------------------------------------------
+## ggerp: Graphical exploration of ERP data with R
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-**ggerp** considers event-related brain potential (ERP) data analysis in a standard linear model setting and implements a set of functions in R to facilitate visual exploration of data and display of statistical testing results.
 
-These R functions are based on [ggplot2 package](https://cran.r-project.org/web/packages/ggplot2/ggplot2.pdf) to enable step-by-step revision of graphic objects. We also adopts significant testing procedure provided by [ERP package](https://cran.r-project.org/web/packages/ERP/index.html).
+**ggerp** considers event-related brain potential (ERP) data analysis in
+a standard linear model setting and implements a set of functions in R
+to facilitate visual exploration of data and display of statistical
+testing results.
 
-Beyond rendering conditioning plots of ERPs on the scalp map, with these functions in `ggerp` users can create animation for displaying significant effects across electrode locations over time by using [gganimate package](https://github.com/dgrtwo/gganimate).
+These R functions are based on [`ggplot2
+package`](https://cran.r-project.org/web/packages/ggplot2/ggplot2.pdf)
+to enable step-by-step revision of graphic objects. We also adopts
+significant testing procedure provided by [`ERP
+package`](https://cran.r-project.org/web/packages/ERP/index.html).
 
-The `ggerp` can be installed using [devtools](https://github.com/hadley/devtools):
+Beyond rendering conditioning plots of ERPs on the scalp map, with these
+functions in `ggerp` users can create animation for displaying
+significant effects across electrode locations over time by using
+[`gganimate package`](https://github.com/dgrtwo/gganimate).
+
+The `ggerp` can be installed using
+[`devtools`](https://github.com/hadley/devtools):
 
     install_github("PsyChiLin/ggerp")
 
 **Packages Preparation**
 
-The following R command lines illustrate the exploration of ERP data using advanced graphical tool `ggerp` available in R.
+The following R command lines illustrate the exploration of ERP data
+using advanced graphical tool `ggerp` available in R.
 
 Load (and install) packages.
 
@@ -46,7 +58,17 @@ Load `ggerp`.
 library(ggerp)
 ```
 
-**Data Preparation** We demonstrate the graphical capabilities of `ggerp` with these real data set `DirectedForgetting`. Download data `DirectedForgetting` from [this website](https://www.dropbox.com/s/20uhxsmcbex3i0m/DirectedForgetting.csv?dl=0) or directly use the build-in one. It contains variables named `TBR_score` and `TBF_score` (continuous), `Condition` (categorical), and one variable per time point (ERP values, i.e, `T_1200`). The scope of possible linear modeling designs is therefore quite large. The command lines shall be marginally adpated to your own ERP dataset. Note that `Condition`, which is a with-subject variable, could also be changed to a between subject variable `Group` in your own dataset.
+**Data Preparation** We demonstrate the graphical capabilities of
+`ggerp` with these real data set `DirectedForgetting`. Download data
+`DirectedForgetting` from [this
+website](https://www.dropbox.com/s/20uhxsmcbex3i0m/DirectedForgetting.csv?dl=0)
+or directly use the build-in one. It contains variables named
+`TBR_score` and `TBF_score` (continuous), `Condition` (categorical), and
+one variable per time point (ERP values, i.e, `T_1200`). The scope of
+possible linear modeling designs is therefore quite large. The command
+lines shall be marginally adpated to your own ERP dataset. Note that
+`Condition`, which is a with-subject variable, could also be changed to
+a between subject variable `Group` in your own dataset.
 
 ``` r
 # dta <- read.csv("DirectedForgetting.csv")
@@ -59,7 +81,8 @@ The sequence of time points is generated, called `time_pt`.
 time_pt <- seq(-200, 1000, 1)
 ```
 
-Specify channels in the data file `erpR_coord` according to their scalp locations.
+Specify channels in the data file `erpR_coord` according to their scalp
+locations.
 
 ``` r
 erpR_coord <- rbind(c(NA, "FP1", NA, "FP2", NA),
@@ -144,7 +167,8 @@ Fig03 <- plot_tete(data = dta_c,
 
 <img src="README_figs/README-F03p-1.png" width="672" />
 
-**Results of significant testing comparing conditions for three channels**
+**Results of significant testing comparing conditions for three
+channels**
 
 First restrict the data to three channels.
 
@@ -190,7 +214,9 @@ test_res <- plot_fa(data = dta,
                     ylim = c(-6, 13))
 ```
 
-Then, create GIF file for animation. The example Gif file could be download on [this website](https://www.dropbox.com/s/p80k9jmbburzynv/Fig05.gif?dl=0).
+Then, create GIF file for animation. The example Gif file could be
+download on [this
+website](https://www.dropbox.com/s/p80k9jmbburzynv/Fig05.gif?dl=0).
 
 ``` r
 Fig05 <- plot_coord(tests_rst = test_res$Test_Rst,
