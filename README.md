@@ -1,11 +1,11 @@
 
-## ggerp: Graphical exploration of ERP data with R
+## `ggerp`: Graphical exploration of ERP data with R
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-**ggerp** considers event-related brain potential (ERP) data analysis in
-a standard linear model setting and implements a set of functions in R
-to facilitate visual exploration of data and display of statistical
+`**ggerp**` considers event-related brain potential (ERP) data analysis
+in a standard linear model setting and implements a set of functions in
+R to facilitate visual exploration of data and display of statistical
 testing results.
 
 These R functions are based on [`ggplot2
