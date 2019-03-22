@@ -10,7 +10,7 @@ results.
 
 These R functions are based on [`ggplot2
 package`](https://cran.r-project.org/web/packages/ggplot2/ggplot2.pdf)
-to enable step-by-step revision of graphic objects. We also adopts
+to enable step-by-step revisions of graphic objects. We also adopts
 significant testing procedure provided by [`ERP
 package`](https://cran.r-project.org/web/packages/ERP/index.html).
 
